@@ -1,0 +1,33 @@
+*{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+.main{
+    margin:20px auto;
+    width:60%;
+    height:400px;
+    border:2px solid #ddd;
+}
+#dataTable{
+    width:95%;
+    height:90%;
+    margin:20px;
+    border-top:1px solid #ddd;
+    border-bottom:1px solid #ddd;
+}
+#dataTable th{
+    text-align: left;
+    border-right:1px solid#ddd;
+    margin-bottom:10px;
+}
+#dataTable th:first-child{
+    border-left:1px solid#ddd;
+}
+#dataTable td{
+    border-top:1px solid #ddd;
+    border-right:1px solid#ddd;
+}
+#dataTable td:first-child{
+    border-left:1px solid#ddd;
+}
