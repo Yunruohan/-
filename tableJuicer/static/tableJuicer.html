@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>表格数据Juicer数据注入</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="text/javascript" src="//cdn.staticfile.org/juicer/0.6.14/juicer-min.js"></script>
+</head>
+<body>
+    <div class="main">
+        <table id="title">
+            <tr>
+                <th>日期</th>
+                <th>名字</th>
+                <th>地址</th>
+            </tr>
+        </table>
+        <table id="dataTable" data-render>
+        </table>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/template" data-tpl>
+    {@each list as item}
+
+    <tr >
+        <td>${item.date}</td>
+        <td>${item.name}</td>
+        <td>${item.address}</td>
+    </tr>
+        
+    {@/each}
+</script>
+<script>
+    var tpl = $('[data-tpl]').html();
+    $.ajax({
+        url:'./json/data.json',
+        type:'GET',
+        dataType:'json',
+        crossDomain:true,
+        success:function(res){
+            if(res.code==0){
+                if(res.data.length!=0){
+                    var list = {
+                        "list":res.data
+                    }
+                    let html = juicer(tpl,list);
+                    $('[data-render]').html(html);
+                }
+            }
+        }
+    })
+</script>
+</html>
